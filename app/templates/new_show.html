@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create
+{% endblock %}
+
+
+{% block content %}
+    <div class="my-2 mx-5 py-5 py-2">
+        <form action="/shows/create" method="POST"class="mx-5 my-2">
+            {% csrf_token %}
+            <div class="pull-right"><a href="/shows">Go Back</a></div>
+            <h1 class="py-3">Add a New Show</h1>
+            <div class="form-group">
+                <label class=" text-white" for="title">Title</label>
+                <input name="title" type="text" class="form-control" id="title">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label class=" text-white" for="network">Network</label>
+                    <select name="network" class="form-control" id="network">
+                        <option value="" selected disabled hidden>Select Network</option>
+                        <option>ABC</option>
+                        <option>AMC</option>
+                        <option>FX</option>
+                        <option>HBO</option>
+                        <option>Hulu</option>
+                        <option>IFC</option>
+                        <option>Netflix</option>
+                        <option>Showtime</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label class=" text-white" for="release_date">Release Date</label><br>
+                    <input type="date" id="release_date" name="release_date" style="border-radius: 25px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" text-white" for="decription">Description</label>
+                <textarea name="description" class="form-control" id="decription" rows="6"></textarea>
+            </div>
+            <div class="row justify-content-center py-3">
+                <button type="submit" class="btn btn-primary ">Create</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Update
+{% endblock %}
+
+
+{% block content %}
+    <div class="my-2 mx-5 py-5 py-2">
+        <form action="/shows/{{id}}/update" method="POST">
+            {% csrf_token %}
+            <div class="pull-right"><a href="/shows">Go Back</a></div>
+            <h1 class="py-3">Edit Show {{id}}</h1>
+            <div class="form-group">
+                <label class=" text-white" for="title">Title</label>
+                <input name="title" value="{{title}}" type="text" class="form-control" id="title" placeholder="Add Title">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label class=" text-white" for="network">Network</label>
+                    <select name="network" class="form-control" id="network">
+                        <option>{{network}}</option>
+                        <option>ABC</option>
+                        <option>AMC</option>
+                        <option>FX</option>
+                        <option>HBO</option>
+                        <option>Hulu</option>
+                        <option>IFC</option>
+                        <option>Netflix</option>
+                        <option>Showtime</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label class=" text-white" for="release_date">Release Date</label><br>
+                    <input type="date" value="{{rel_date|date:'Y-m-d'}}" id="release_date" name="release_date" style="border-radius: 25px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" text-white" for="decription">Description</label>
+                <textarea name="description" class="form-control" id="decription" rows="6">{{desc}}</textarea>
+            </div>
+            <div class="row justify-content-center py-3">
+                <button type="submit" class="btn btn-primary ">Update</button>
+            </div>
+        </form>
+        <div class="row justify-content-center py-3"><a href="/shows/{{id}}">Go to Show</a></div>
+    </div>
+{% endblock %}
+

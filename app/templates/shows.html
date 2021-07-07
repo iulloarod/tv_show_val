@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Read (All)
+{% endblock %}
+
+
+{% block content %}
+    <div class="my-2 mx-5 py-5 py-2">
+        <h1 class="py-3">All Shows</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for show in all_shows %}
+                <tr>
+                    <th scope="row"><a href="/shows/{{show.id}}">{{ show.id }}</a></th>
+                    <td>{{ show.title }}</td>
+                    <td>{{ show.network }}</td>
+                    <td>{{ show.rel_date }}</td>
+                    <td><a href="/shows/{{show.id}}">Show </a>|<a href="/shows/{{show.id}}/edit"> Edit </a>|<a href="/shows/{{show.id}}/destroy"> Delete</a></td>
+                {% endfor %}
+                </tr>
+            </tbody>
+            
+        </table>
+        <div class="py-3"><a href="/shows/new">Add a New Show</a></div>
+    </div>
+{% endblock %}
